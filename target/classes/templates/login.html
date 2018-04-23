@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="/assets/brand/sk-favicon.png" />
+
+    <title>xAppDescription</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/font-awesome.min.css" />
+
+    <!-- page css -->
+    <style type="text/css">
+        .login {
+            background: #fff;
+            margin: 80px 60px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .shadow-bottom {
+            -webkit-box-shadow: 0 8px 6px -6px #333;
+            -moz-box-shadow: 0 8px 6px -6px #333;
+            box-shadow: 0 8px 6px -6px #333;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="login shadow-bottom">
+                    <div class="login-logo">
+                        <p class="text-center">
+                            <img src="/assets/brand/sk-logo.svg" class="img-rounded" alt="SKumar" height="50%"
+                                 width="50%"/>
+                        </p>
+                    </div>
+                    <hr/>
+                    <div class="login-form">
+                        <div th:if="${param.error}" class="alert-error">
+                            <div class="alert alert-danger text-center" role="alert">
+                                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                                <small>Please enter a correct username and password.</small>
+                            </div>
+                        </div>
+                        <div th:if="${param.logout}" class="alert-success">
+                            <div class="alert alert-success text-center" role="alert">
+                                You have been logged out.
+                            </div>
+                        </div>
+                        <form name="login" th:action="@{/login}" method="post">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="username" placeholder="Username"
+                                           required="required"
+                                           autofocus="autofocus"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-lock" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                    <input type="password" class="form-control" name="password" placeholder="Password"
+                                           required="required"/>
+                                </div>
+                            </div>
+                            <input type="submit" id="submit" name="submit" class="btn btn-success btn-block" value="Login"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</body>
+</html>
